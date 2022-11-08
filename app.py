@@ -1,22 +1,35 @@
-from flask import Flask, render_template, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
+from flask import Flask, redirect, url_for, render_template, request, abort
+import pymongo
+from flask_bcrypt import Bcrypt
+
+
+
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = 'thisisasecretkey'
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(7), nullable=False)
-    password = db.Column(db.String(80), nullable=False)
+bcrypt = Bcrypt(app)
 
 
-@app.route('/')
-def home():
-    return render_template('login.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
+
+client = pymongo.MongoClient("mongodb+srv://pstud:gVJQTsM2ftVKES5d@inf1039cardapuc.1cskrne.mongodb.net/?retryWrites=true&w=majority")
+
+db = client.cardapuc
+
+col = db.restaurantes
+
+
+@app.route("/", methods=["POST", "GET"])
+def landing_page():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        result = col.find_one({"username": username})
+        try:
+            pw_hash = bcrypt.generate_password_hash(password)
+            col.find_one({"password": pw_hash})
+        except:
+            abort(404)
+        return render_template("register.html", result = result)
+    
+    return render_template("register.html")
