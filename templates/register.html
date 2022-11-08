@@ -18,45 +18,12 @@
                     LOGIN
                 </h1>
             </div>
-            <p id="name">Nome</p>
-            <form>
-                <div>
-                    <input type="text" id="namebox">
-                </div>
-            </form>
-            <div id="nameError">
-                Nome inválido!
-            </div>
-            <p id="matricula"> Matrícula</p>
-            <form>
-                <div>
-                    <input type="text" id="username">
-                </div>
-            </form>
-            <div id="matriculaError">
-                Matrícula inválida!
-            </div>
-            <div id="matriculaexistente">
-                Essa Matrícula já existe!
-            </div>
-            <p id="senha"> Senha</p>
-            <form>    
-                <div>
-                    <input type="password" id="password">
-                </div>
-            <form>
-            <div id="passwordError">
-                Senha inválida, deve possuir pelo menos 1 caractere maiúsculas e 1 número !
-            </div>
-            <br>
-            </form>
-                <div class="container">
-                    <div class="center">
-                    <button type="button" id="login">Criar Conta</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+        <form method="post">
+            <label for="username">Nome de usuario</label>
+            <input name="username" type="text">
+            <label for="password">Senha</label>
+            <input name="password" type="text">
+        </form>
     </div>
     <script src="register.js"></script>
 </body>
