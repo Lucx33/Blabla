@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrototipoTeste</title>
-    <link rel="stylesheet" href="/static/login.css">
+    <link rel="stylesheet" href="register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
@@ -18,38 +18,46 @@
                     LOGIN
                 </h1>
             </div>
+            <p id="name">Nome</p>
+            <form>
+                <div>
+                    <input type="text" id="namebox">
+                </div>
+            </form>
+            <div id="nameError">
+                Nome inválido!
+            </div>
             <p id="matricula"> Matrícula</p>
             <form>
                 <div>
                     <input type="text" id="username">
                 </div>
             </form>
+            <div id="matriculaError">
+                Matrícula inválida!
+            </div>
+            <div id="matriculaexistente">
+                Essa Matrícula já existe!
+            </div>
             <p id="senha"> Senha</p>
             <form>    
                 <div>
                     <input type="password" id="password">
                 </div>
-                <p id="nome"> Nome</p>
             <form>
-                <div>
-                    <input type="text" id="nome">
-                </div>
-                <div id="loginError">
-                    Matrícula e/ou senha incorreta(s)!
-                </div>
-                <br>
-                <form>
-                    <button type="button" id="criarConta">Não possui uma conta? Criar Conta</button>
-                </form>
+            <div id="passwordError">
+                Senha inválida, deve possuir pelo menos 1 caractere maiúsculas e 1 número !
+            </div>
+            <br>
             </form>
                 <div class="container">
                     <div class="center">
-                    <button type="button" id="login">Entrar</button>
+                    <button type="button" id="login">Criar Conta</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <script src="main.js"></script>
+    <script src="register.js"></script>
 </body>
 </html>
